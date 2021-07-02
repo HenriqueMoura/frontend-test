@@ -10,14 +10,14 @@ $base-color: #BB3739;
 $bg-white: #FFF;
 
 $default-grey: #909090;
-$default-bg-grey: #9090904d;
+$default-bg-grey: #9090903b;
 $default-title: #272727;
 
 //END - variable
 
 body{
   font-family: 'Montserrat', sans-serif;
-  background: #f0f0f0;
+  background: #272727;
   margin: 0;
   header{
     display: flex;
@@ -34,7 +34,7 @@ body{
       height: auto;
     }
     h1{
-      width: 80%;
+      width: 70%;
       background: white;
 
       text-align: right;
@@ -51,7 +51,6 @@ body{
     width: 300px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 7px 30px rgba(220, 220, 220, 0.3);
 
     ol{
       background: $bg-white;
@@ -62,22 +61,38 @@ body{
         display: flex;
         align-items: center;
 
-        height: 70px;
+        height: 80px;
         counter-increment: leaderboard;
 
-        &:nth-child(odd){
+        &:nth-child(even){
           background: $default-bg-grey;
+        }
+        &:hover .statistics-box{
+          display: flex;
         }
 
         .photo{
-          min-width: 40px;
-          min-height: 40px;
+          width: 50px;
+          height: 50px;
           margin-inline: 20px;
           border: 3px solid $base-color;
           border-radius: 50%;
 
           position: relative;
 
+          .overflow-img{
+            width: 101%;
+            height: 101%;
+            float: left;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+          img{
+            width: 80px;
+            height: auto;
+            position: relative;
+            right: 10px;
+          }
           &::before{
             content: counter(leaderboard);
             position: absolute;
@@ -90,26 +105,110 @@ body{
             height: 20px;
             line-height: 20px;
             font-size: 13px;
+            font-weight: bold;
+            text-align: center;
             color: $default-grey;
+
             background: $bg-white;
             border-radius: 20px;
-            text-align: center;
+
+
+
           }
         }
         .info{
           width: auto;
           p{
             font-size: 15px;
-            margin: 0;
+            margin: 0 0 -5px 0;
             color: $base-color;
             font-weight: 600;
           }
           span{
             color: $default-grey;
-            font-size: 13px;
+            font-size: 10px;
           }
         }
+        .statistics-box{
+          position: absolute;
+          right: -180px;
 
+          width: 150px;
+          background-color: $bg-white;
+
+          border-radius: 3px;
+          display: none;
+
+
+          &::before{
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 14px;
+            left: -4px;
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            transform: rotate(135deg);
+          }
+
+          span{
+            padding: 2px 5px;
+            font-size: 18px;
+            font-weight: bolder;
+            display: block;
+            color: #909090;
+            &:hover{
+              color: $base-color;
+            }
+          }
+          div{
+            min-width: 37%;
+            &::before{
+
+              display: block;
+              position: relative;
+              padding:4px 0px 0 4px;
+              font-size: 8px;
+              font-weight: bolder;
+              color: #FFF;
+              background-color: $base-color;
+              white-space: nowrap;
+            }
+
+          }
+
+          .positive{
+            border-right: 1px solid #0000005e;
+            &::before{
+              content: 'Gostam';
+            }
+          }
+
+          .negative{
+            &::before{
+              content: 'Não Gostam';
+            }
+          }
+
+          .erro{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            span{
+              padding: 0 10px;
+              font-size: 12px;
+              b{
+                display: block;
+                color: $base-color;
+                font-size: 9px;
+              }
+            }
+          }
+        }
       }
     }
   }
