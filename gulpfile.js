@@ -10,7 +10,7 @@ var
   sass = gulpSass(nodeSass);
 
 function css() {
-  return gulp.src('public/scss/*.scss')
+  return gulp.src('public/scss/global.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cleanCSS({ compatibility: 'ie8' }))
