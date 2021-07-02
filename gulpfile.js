@@ -15,11 +15,15 @@ function css() {
     .pipe(autoprefixer())
     .pipe(cleanCSS({ compatibility: 'ie8' }))
     .pipe(rename("style.min.css"))
-    .pipe(
-      purgecss({
-        content: ['public/**/*.html']
-      })
-    )
+    //  REMOVE BECAUSE DONT WORK WITH JAVASCRIPT RENDER ELEMENT
+
+    // .pipe(
+    //   purgecss({
+    //     content: ['public/**/*.html']
+    //   })
+    // )
+
+
     .pipe(gulp.dest('./public/stylesheets/'))
     .pipe(browserSync.stream());
 }
